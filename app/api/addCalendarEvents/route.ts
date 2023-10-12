@@ -34,14 +34,25 @@ export async function GET(request: Request) {
     version: "v3",
   });
 
-  const t = await gCal.calendars.insert({
+  // First, let's check if the Nutchecker calendar already exists
+  const allCalendars = await gCal.calendarList.list();
+  const nutcheckerCal = allCalendars.data.items?.find((cal) => {
+    return cal.summary === "Nutchecker Reminder";
+  });
+  if (nutcheckerCal) {
+    // Fill it with reminder events
+    return NextResponse.json({ message: nutcheckerCal.id });
+  }
+
+  // If the Nutchecker calender does not exists, we create it
+  const createdCal = await gCal.calendars.insert({
     requestBody: {
       description: "Test",
-      summary: "hello world",
+      summary: "Nutchecker Reminder",
     },
   });
 
-  // const all = await gCal.calendarList.list();
+  // End fill it with reminder events
 
-  return NextResponse.json({});
+  return NextResponse.json({ message: createdCal.data.id });
 }
