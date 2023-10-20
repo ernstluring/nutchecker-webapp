@@ -3,7 +3,6 @@ import GoogleProvider from "next-auth/providers/google";
 
 const scopes = [
   "openid",
-  "email",
   "https://www.googleapis.com/auth/calendar.app.created",
   "https://www.googleapis.com/auth/calendar.readonly",
 ];
@@ -28,16 +27,19 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUT_SECRET,
   callbacks: {
     jwt: ({ token, account }) => {
-      // Persist the OAuth access_token and or the user id to the token right after signin
       if (account) {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
+        token.provider = account.provider;
       }
       return token;
     },
     session: ({ session, token }) => {
+      // Add extra information to the session.
+      // You can find the typings in types/next-auth.d.ts
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;
+      session.provider = token.provider;
       return session;
     },
   },
