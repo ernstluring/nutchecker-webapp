@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import { google, calendar_v3 } from "googleapis";
 
 import { getAuthSession } from "@/lib/session";
@@ -66,7 +65,6 @@ function formatDateToYMD(date: Date) {
 // create a specific 'Nutchecker Reminder' calendar and fill it with reminder events.
 export async function GET(request: Request) {
   const session = await getAuthSession();
-
   if (!session) {
     return redirect("/");
   }
