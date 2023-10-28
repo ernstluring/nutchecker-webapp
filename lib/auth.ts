@@ -4,7 +4,6 @@ import GoogleProvider from "next-auth/providers/google";
 const scopes = [
   "openid",
   "https://www.googleapis.com/auth/calendar.app.created",
-  "https://www.googleapis.com/auth/calendar.readonly",
 ];
 
 export const authOptions: NextAuthOptions = {

@@ -1,10 +1,18 @@
+"use client";
+
 import { ConnectButton } from "./connect-button";
 import FillCalendar from "./fillCalendar";
 import DisconnectButton from "./disconnect-button";
 import { getAuthSession } from "@/lib/session";
+import { Center, Square, Circle } from "@chakra-ui/react";
+import { use, useEffect, useState } from "react";
+import { Session } from "next-auth";
 
-export default async function ConnectForm() {
-  const session = await getAuthSession();
+export type ConnectFormPropsType = {
+  session: Session | null;
+};
+
+export default function ConnectForm({ session }: ConnectFormPropsType) {
   if (session) {
     return (
       <form className="w-full max-w-sm">

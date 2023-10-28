@@ -44,9 +44,6 @@ function getNextThursday() {
   return nextThursday;
 }
 
-var nextThursdayDate = getNextThursday();
-console.log("Next Thursday's date: " + nextThursdayDate);
-
 function formatDateToYMD(date: Date) {
   let day = date.getDate();
   let month = date.getMonth() + 1; // Note: January is 0

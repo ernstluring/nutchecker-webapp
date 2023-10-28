@@ -1,9 +1,7 @@
 import { NutcheckerApp } from "@/components/nutchecker-app";
+import { getAuthSession } from "@/lib/session";
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <NutcheckerApp />
-    </main>
-  );
+export default async function Home() {
+  const session = await getAuthSession();
+  return <NutcheckerApp session={session} />;
 }
