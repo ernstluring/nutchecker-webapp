@@ -14,10 +14,13 @@ import {
   Center,
   HStack,
   VStack,
+  Divider,
 } from "@chakra-ui/react";
 import { myColors } from "@/lib/colors";
 import { ConnectButton } from "./connect-button";
 import DisconnectButton from "./disconnect-button";
+import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { SocialButtons } from "./social-buttons";
 
 export type NutcheckerAppType = {
   session: Session | null;
@@ -55,6 +58,11 @@ export function NutcheckerApp({ session }: NutcheckerAppType) {
             De webapp die bijdraagt aan bewustwording en vroegtijdige
             signalering van teelbalkanker.
           </Text>
+          <Text color={"gray.600"} maxW={"3xl"}>
+            Teelbalkanker is de meest voorkomende kanker bij mannen tussen 15 en
+            35 jaar. Bij vroegtijdige opsporing is de kans op genezing gelukkig
+            zeer groot: wel 90 tot 100%.
+          </Text>
           <Stack spacing={6} direction={"column"}>
             {session ? <DisconnectButton /> : <ConnectButton />}
             <Button rounded={"full"} px={6}>
@@ -66,6 +74,8 @@ export function NutcheckerApp({ session }: NutcheckerAppType) {
               </a>
             </Button>
           </Stack>
+          <Divider />
+          <SocialButtons />
         </Stack>
       </Container>
     </main>
