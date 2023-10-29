@@ -28,8 +28,8 @@ export type NutcheckerAppType = {
 export function NutcheckerApp({ session }: NutcheckerAppType) {
   return (
     <main>
-      <Container maxW={"5xl"}>
-        <Center w={"full"} py={10}>
+      <Container maxW={"5xl"} paddingTop={10} paddingBottom={10}>
+        <Center w={"full"} marginBottom={10}>
           <Image
             className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
             src="/the-nutcheckers.png"

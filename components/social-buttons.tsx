@@ -6,7 +6,7 @@ import { MdEmail } from "react-icons/md";
 export function SocialButtons() {
   return (
     <HStack>
-      <Button colorScheme="linkedin" leftIcon={<FaLinkedin />}>
+      <Button w={210} colorScheme="linkedin" leftIcon={<FaLinkedin />}>
         <a href="https://www.linkedin.com/in/ernstluring" target="_blank">
           ernstluring
         </a>
