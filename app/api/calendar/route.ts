@@ -101,7 +101,8 @@ export async function GET(request: Request) {
     02 - Roll one nut between thumb and fingers to check for lumps, swelling or pain.
     03 - Repeat with the other nut.
 
-    You nuts should feel smooth, firm and sensitive but not painful. If something doesn't feel right, see a doctor!
+    You nuts should feel smooth, firm and sensitive but not painful. 
+    If something doesn't feel right, see a doctor!
 
     Source: Movember.com
     https://cdn.movember.com/uploads/files/Your%20Health/TesticularSelfExamination.pdf
