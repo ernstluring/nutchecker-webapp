@@ -2,12 +2,14 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "The Nutchecker",
-  description: "A description",
+  title: "Nutchecker Web App",
+  description:
+    "De webapp die bijdraagt aan bewustwording en vroegtijdige signalering van teelbalkanker.",
 };
 
 export default function RootLayout({
@@ -19,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );
