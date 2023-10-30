@@ -19,7 +19,6 @@ import {
 import { myColors } from "@/lib/colors";
 import { ConnectButton } from "./connect-button";
 import DisconnectButton from "./disconnect-button";
-import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { SocialButtons } from "./social-buttons";
 
 export type NutcheckerAppType = {

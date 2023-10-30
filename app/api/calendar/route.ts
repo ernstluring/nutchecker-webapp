@@ -3,6 +3,7 @@ import { google, calendar_v3 } from "googleapis";
 import { getAuthSession } from "@/lib/session";
 import { isGoogleProvider } from "@/lib/provider";
 import { redirect } from "next/navigation";
+import { NextResponse } from "next/server";
 
 async function GetOrCreateNutcheckerCalendar(
   gCal: calendar_v3.Calendar
@@ -63,13 +64,15 @@ function formatDateToYMD(date: Date) {
 export async function GET(request: Request) {
   const session = await getAuthSession();
   if (!session) {
-    return redirect("/");
+    console.log("No session available; redirecting to home page");
+    return NextResponse.json({});
   }
 
   const accessToken = session?.accessToken;
   const refreshToken = session?.refreshToken;
 
   if (isGoogleProvider(session?.provider)) {
+    console.log("Connecting to Google Calendar");
     const gAuthClient = new google.auth.OAuth2({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -84,6 +87,7 @@ export async function GET(request: Request) {
       version: "v3",
     });
 
+    console.log("Creating and inserting new calendar");
     // Create nutchecker calendar
     const nutcheckerCal = await gCal.calendars.insert({
       requestBody: {
@@ -118,12 +122,17 @@ export async function GET(request: Request) {
       recurrence: ["RRULE:FREQ=WEEKLY;BYDAY=TH;INTERVAL=2"],
     };
 
-    // Fill with events
-    gCal.events.insert({
-      calendarId: nutcheckerCal.data.id!,
-      requestBody: newEvent,
-    });
+    console.log("creating and inserting events");
+    try {
+      // Fill with events
+      const insertEventsResp = await gCal.events.insert({
+        calendarId: nutcheckerCal.data.id!,
+        requestBody: newEvent,
+      });
+    } catch (e) {
+      console.error("Inserting events unsuccesfull. " + e);
+    }
   }
 
-  return redirect("/");
+  return NextResponse.json({});
 }

@@ -6,7 +6,7 @@ import { Text } from "@chakra-ui/react";
 export function ConnectButton() {
   return (
     <GoogleButton
-      onClick={() => signIn("google", { callbackUrl: "/api/calendar" })}
+      onClick={() => signIn("google", { callbackUrl: "/syncCalendar" })}
     >
       <Text>{"Sign in with Google"}</Text>
     </GoogleButton>
