@@ -63,7 +63,6 @@ export function NutcheckerApp({ session }: NutcheckerAppType) {
             Daarom is het belangrijk om je zaakje af en toe te checken! En deze
             webapp helpt je daar bij:
           </Text>
-          {/* <Heading>The Nutchecker: </Heading> */}
           <List spacing={3} maxW={"3xl"} textAlign={"left"}>
             <ListItem>
               <ListIcon as={GiPeanut} color="brown" />

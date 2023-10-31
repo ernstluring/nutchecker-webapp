@@ -7,10 +7,18 @@ export function GoogleButton({
   ...props
 }: {
   children: React.ReactNode;
+  enabled: boolean;
   onClick?: () => void;
 }) {
+  const { enabled } = props;
   return (
-    <Button w={"full"} variant={"outline"} leftIcon={<FcGoogle />} {...props}>
+    <Button
+      disabled={!enabled}
+      w={"full"}
+      variant={"outline"}
+      leftIcon={<FcGoogle />}
+      {...props}
+    >
       <Center>{children}</Center>
     </Button>
   );

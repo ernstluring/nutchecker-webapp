@@ -35,7 +35,7 @@ function formatDateToYMD(date: Date) {
   return `${year}-${formattedMonth}-${formattedDay}`;
 }
 
-export const maxDuration = 100;
+export const maxDuration = 60;
 
 // This route is used as callback from the Google OAuth provider.
 // After the user has authenticated we want to connect to their Google Calendar,

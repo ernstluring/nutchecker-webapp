@@ -1,7 +1,19 @@
 "use client";
-import { Center, Flex, Spinner, Text, VStack } from "@chakra-ui/react";
+import {
+  Center,
+  Flex,
+  List,
+  ListIcon,
+  ListItem,
+  Spinner,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { CiCircleRemove } from "react-icons/ci";
+import { GiPeanut } from "react-icons/gi";
+import { MdOutlineDone } from "react-icons/md";
 
 export default function SyncCalendar() {
   const router = useRouter();
@@ -32,10 +44,18 @@ export default function SyncCalendar() {
             color="blue.500"
             size="xl"
           />
-          <Text>
-            Creating the Nutchecker calendar and adding the reminder events...
-          </Text>
-          <Text>Note; this can take some time.</Text>
+          <List spacing={3} maxW={"3xl"} textAlign={"left"}>
+            <ListItem>
+              <ListIcon as={GiPeanut} color="brown" />
+              Trying to connect to your Google Calendar...
+            </ListItem>
+            <ListItem>
+              <ListIcon as={GiPeanut} color="brown" />
+              Creating the special Nutchecker calendar and adding reminder
+              events...
+            </ListItem>
+          </List>
+          <Text>Note: this can take some time.</Text>
         </VStack>
       </Center>
     </Flex>
