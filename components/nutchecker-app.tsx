@@ -52,10 +52,6 @@ export function NutcheckerApp({ session }: NutcheckerAppType) {
               Checker
             </Text>
           </Heading>
-          {/* <Text color={"gray.600"} maxW={"3xl"}>
-            De webapp die bijdraagt aan bewustwording en vroegtijdige
-            signalering van teelbalkanker.
-          </Text> */}
           <Text maxW={"3xl"}>
             Teelbalkanker is de meest voorkomende kanker bij mannen tussen 15 en
             35 jaar. Bij vroegtijdige opsporing is de kans op genezing gelukkig
