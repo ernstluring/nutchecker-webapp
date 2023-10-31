@@ -1,25 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import ConnectForm from "./connect-form";
 import { Session } from "next-auth";
 import {
-  Flex,
   Container,
   Heading,
   Stack,
   Text,
   Button,
-  IconProps,
   Center,
-  HStack,
-  VStack,
   Divider,
+  List,
+  ListItem,
+  ListIcon,
 } from "@chakra-ui/react";
 import { myColors } from "@/lib/colors";
 import { ConnectButton } from "./connect-button";
 import DisconnectButton from "./disconnect-button";
 import { SocialButtons } from "./social-buttons";
+import { MdCheckCircle } from "react-icons/md";
 
 export type NutcheckerAppType = {
   session: Session | null;
@@ -53,15 +52,33 @@ export function NutcheckerApp({ session }: NutcheckerAppType) {
               Checker
             </Text>
           </Heading>
-          <Text color={"gray.600"} maxW={"3xl"}>
+          {/* <Text color={"gray.600"} maxW={"3xl"}>
             De webapp die bijdraagt aan bewustwording en vroegtijdige
             signalering van teelbalkanker.
-          </Text>
-          <Text color={"gray.600"} maxW={"3xl"}>
+          </Text> */}
+          <Text maxW={"3xl"}>
             Teelbalkanker is de meest voorkomende kanker bij mannen tussen 15 en
             35 jaar. Bij vroegtijdige opsporing is de kans op genezing gelukkig
-            zeer groot: wel 90 tot 100%.
+            zeer groot: wel 90 tot 100%. Daarom is het belangrijk om je zaakje
+            af en toe te checken!
           </Text>
+          <Heading>The Nutchecker: </Heading>
+          <List spacing={3} maxW={"3xl"} textAlign={"left"}>
+            <ListItem>
+              <ListIcon as={MdCheckCircle} color="green.500" />
+              Maakt verbinding met je Google Calendar
+            </ListItem>
+            <ListItem>
+              <ListIcon as={MdCheckCircle} color="green.500" />
+              Creeërt een eigen Nutchecker calendar binnen jou Google Calendar
+              omgeving
+            </ListItem>
+            <ListItem>
+              <ListIcon as={MdCheckCircle} color="green.500" />
+              Geeft 1x in de twee weken een reminder en een stappenplan voor
+              zelfonderzoek
+            </ListItem>
+          </List>
           <Stack spacing={6} direction={"column"}>
             {session ? <DisconnectButton /> : <ConnectButton />}
             <Button rounded={"full"} px={6}>

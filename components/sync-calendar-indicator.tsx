@@ -1,6 +1,5 @@
 "use client";
 import { Center, Flex, Spinner, Text, VStack } from "@chakra-ui/react";
-import { Session } from "next-auth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -33,6 +32,10 @@ export default function SyncCalendar() {
             color="blue.500"
             size="xl"
           />
+          <Text>
+            Creating the Nutchecker calendar and adding the reminder events...
+            This can take a few seconds.
+          </Text>
         </VStack>
       </Center>
     </Flex>
