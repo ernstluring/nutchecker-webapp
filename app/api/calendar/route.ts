@@ -35,7 +35,7 @@ function formatDateToYMD(date: Date) {
   return `${year}-${formattedMonth}-${formattedDay}`;
 }
 
-export const maxDuration = 20;
+export const maxDuration = 100;
 
 // This route is used as callback from the Google OAuth provider.
 // After the user has authenticated we want to connect to their Google Calendar,
@@ -51,6 +51,7 @@ export async function GET(request: Request) {
   const refreshToken = session?.refreshToken;
 
   if (isGoogleProvider(session?.provider)) {
+    const start = Date.now();
     console.log("Connecting to Google Calendar");
     const gAuthClient = new google.auth.OAuth2({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -108,6 +109,8 @@ export async function GET(request: Request) {
         calendarId: nutcheckerCal.data.id!,
         requestBody: newEvent,
       });
+      const end = Date.now();
+      console.log(`Execution time: ${end - start} ms`);
     } catch (e) {
       console.error("Inserting events unsuccesfull. " + e);
     }

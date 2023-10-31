@@ -8,12 +8,8 @@ export default function SyncCalendar() {
 
   useEffect(() => {
     let mutex = true;
-    const start = Date.now();
     fetch("/api/calendar").then((resp) => {
       router.push("/");
-
-      const end = Date.now();
-      console.log(`Execution time: ${end - start} ms`);
     });
     return () => {
       mutex = false;
