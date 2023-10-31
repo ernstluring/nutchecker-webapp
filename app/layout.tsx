@@ -7,7 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Nutchecker Web App",
+  title: "Nutchecker Web App - Reminders that help with checking your nuts",
   description:
     "De webapp die bijdraagt aan bewustwording en vroegtijdige signalering van teelbalkanker.",
 };
