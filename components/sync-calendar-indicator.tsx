@@ -8,8 +8,12 @@ export default function SyncCalendar() {
 
   useEffect(() => {
     let mutex = true;
+    const start = Date.now();
     fetch("/api/calendar").then((resp) => {
       router.push("/");
+
+      const end = Date.now();
+      console.log(`Execution time: ${end - start} ms`);
     });
     return () => {
       mutex = false;
@@ -34,8 +38,8 @@ export default function SyncCalendar() {
           />
           <Text>
             Creating the Nutchecker calendar and adding the reminder events...
-            This can take a few seconds.
           </Text>
+          <Text>Note; this can take some time.</Text>
         </VStack>
       </Center>
     </Flex>

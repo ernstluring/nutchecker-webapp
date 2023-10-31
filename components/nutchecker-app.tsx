@@ -18,7 +18,7 @@ import { myColors } from "@/lib/colors";
 import { ConnectButton } from "./connect-button";
 import DisconnectButton from "./disconnect-button";
 import { SocialButtons } from "./social-buttons";
-import { MdCheckCircle } from "react-icons/md";
+import { GiPeanut } from "react-icons/gi";
 
 export type NutcheckerAppType = {
   session: Session | null;
@@ -65,18 +65,18 @@ export function NutcheckerApp({ session }: NutcheckerAppType) {
           <Heading>The Nutchecker: </Heading>
           <List spacing={3} maxW={"3xl"} textAlign={"left"}>
             <ListItem>
-              <ListIcon as={MdCheckCircle} color="green.500" />
+              <ListIcon as={GiPeanut} color="brown" />
               Maakt verbinding met je Google Calendar
             </ListItem>
             <ListItem>
-              <ListIcon as={MdCheckCircle} color="green.500" />
-              Creeërt een eigen Nutchecker calendar binnen jou Google Calendar
-              omgeving
+              <ListIcon as={GiPeanut} color="brown" />
+              Creeërt een eigen Nutchecker calendar binnen jouw Google Calendar
+              omgeving en vult die met handige "nutchecking" reminders
             </ListItem>
             <ListItem>
-              <ListIcon as={MdCheckCircle} color="green.500" />
-              Geeft 1x in de twee weken een reminder en een stappenplan voor
-              zelfonderzoek
+              <ListIcon as={GiPeanut} color="brown" />
+              1x in de 2 weken krijg je een reminder en een stappenplan voor
+              zelfonderzoek in jouw Google Calendar
             </ListItem>
           </List>
           <Stack spacing={6} direction={"column"}>

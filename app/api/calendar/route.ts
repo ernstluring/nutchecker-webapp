@@ -2,30 +2,7 @@ import { google, calendar_v3 } from "googleapis";
 
 import { getAuthSession } from "@/lib/session";
 import { isGoogleProvider } from "@/lib/provider";
-import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
-
-async function GetOrCreateNutcheckerCalendar(
-  gCal: calendar_v3.Calendar
-): Promise<calendar_v3.Schema$Calendar> {
-  const allCalendars = await gCal.calendarList.list();
-  // First check if the Nutchecker calendar already exists
-  const existingCal = allCalendars.data.items?.find((cal) => {
-    return cal.summary === "Nutchecker Reminder";
-  });
-  if (existingCal) {
-    return existingCal;
-  }
-
-  // If the Nutchecker calender does not exists, we create it
-  const createdCal = await gCal.calendars.insert({
-    requestBody: {
-      description: "Test",
-      summary: "Nutchecker Reminder",
-    },
-  });
-  return createdCal.data;
-}
 
 function getNextThursday() {
   var today = new Date();
@@ -58,13 +35,15 @@ function formatDateToYMD(date: Date) {
   return `${year}-${formattedMonth}-${formattedDay}`;
 }
 
+export const maxDuration = 20;
+
 // This route is used as callback from the Google OAuth provider.
 // After the user has authenticated we want to connect to their Google Calendar,
 // create a specific 'Nutchecker Reminder' calendar and fill it with reminder events.
 export async function GET(request: Request) {
   const session = await getAuthSession();
   if (!session) {
-    console.log("No session available; redirecting to home page");
+    console.log("No session available");
     return NextResponse.json({});
   }
 
@@ -125,7 +104,7 @@ export async function GET(request: Request) {
     console.log("creating and inserting events");
     try {
       // Fill with events
-      const insertEventsResp = await gCal.events.insert({
+      await gCal.events.insert({
         calendarId: nutcheckerCal.data.id!,
         requestBody: newEvent,
       });
