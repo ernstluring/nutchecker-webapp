@@ -8,7 +8,7 @@ export function ConnectButton() {
     <GoogleButton
       onClick={() => signIn("google", { callbackUrl: "/syncCalendar" })}
     >
-      <Text>{"Sign in with Google"}</Text>
+      <Text>{"Connect your Google Calendar"}</Text>
     </GoogleButton>
   );
 }

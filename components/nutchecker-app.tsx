@@ -19,6 +19,8 @@ import { ConnectButton } from "./connect-button";
 import DisconnectButton from "./disconnect-button";
 import { SocialButtons } from "./social-buttons";
 import { GiPeanut } from "react-icons/gi";
+import { CiCircleRemove } from "react-icons/ci";
+import { MdOutlineDone } from "react-icons/md";
 
 export type NutcheckerAppType = {
   session: Session | null;
@@ -55,24 +57,31 @@ export function NutcheckerApp({ session }: NutcheckerAppType) {
           <Text maxW={"3xl"}>
             Teelbalkanker is de meest voorkomende kanker bij mannen tussen 15 en
             35 jaar. Bij vroegtijdige opsporing is de kans op genezing gelukkig
-            zeer groot: wel 90 tot 100%. Daarom is het belangrijk om je zaakje
-            af en toe te checken!
+            zeer groot: wel 90 tot 100%.
           </Text>
-          <Heading>The Nutchecker: </Heading>
+          <Text maxW={"3xl"}>
+            Daarom is het belangrijk om je zaakje af en toe te checken! En deze
+            webapp helpt je daar bij:
+          </Text>
+          {/* <Heading>The Nutchecker: </Heading> */}
           <List spacing={3} maxW={"3xl"} textAlign={"left"}>
             <ListItem>
               <ListIcon as={GiPeanut} color="brown" />
-              Maakt verbinding met je Google Calendar
+              1x in de 2 weken krijg je een &quot;nutchecking&quot; reminder in
+              jouw Google Calendar omgeving
             </ListItem>
             <ListItem>
               <ListIcon as={GiPeanut} color="brown" />
-              Creeërt een eigen Nutchecker calendar binnen jouw Google Calendar
-              omgeving en vult die met handige "nutchecking" reminders
+              Inclusief stappenplan met drie eenvoudige stappen. Gemaakt door de
+              Movember stichting
             </ListItem>
             <ListItem>
-              <ListIcon as={GiPeanut} color="brown" />
-              1x in de 2 weken krijg je een reminder en een stappenplan voor
-              zelfonderzoek in jouw Google Calendar
+              <ListIcon as={MdOutlineDone} color="green" />
+              Eenvoudig in te stellen
+            </ListItem>
+            <ListItem>
+              <ListIcon as={CiCircleRemove} color="red" />
+              Eenvoudig weer te verwijderen
             </ListItem>
           </List>
           <Stack spacing={6} direction={"column"}>
@@ -82,7 +91,7 @@ export function NutcheckerApp({ session }: NutcheckerAppType) {
                 href="https://nl.movember.com/donate/details?teamId=2422705"
                 target="_blank"
               >
-                Movember actie
+                Doneer aan Movember
               </a>
             </Button>
           </Stack>
