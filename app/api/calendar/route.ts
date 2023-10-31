@@ -99,6 +99,7 @@ export async function GET(request: Request) {
         date: startDate,
       },
       recurrence: ["RRULE:FREQ=WEEKLY;BYDAY=TH;INTERVAL=2"],
+      transparency: "transparent",
     };
 
     console.log("creating and inserting events");
