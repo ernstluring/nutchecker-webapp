@@ -71,8 +71,8 @@ export function NutcheckerApp({ session }: NutcheckerAppType) {
             </ListItem>
             <ListItem>
               <ListIcon as={GiPeanut} color="brown" />
-              Inclusief stappenplan met drie eenvoudige stappen. Gemaakt door de
-              Movember stichting
+              Inclusief stappenplan met drie eenvoudige stappen, gemaakt door de
+              Movember Stichting
             </ListItem>
             <ListItem>
               <ListIcon as={MdOutlineDone} color="green" />
