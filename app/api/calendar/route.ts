@@ -3,6 +3,7 @@ import { google, calendar_v3 } from "googleapis";
 import { getAuthSession } from "@/lib/session";
 import { isGoogleProvider } from "@/lib/provider";
 import { NextResponse } from "next/server";
+import { track } from "@vercel/analytics";
 
 function getNextThursday() {
   var today = new Date();
@@ -112,6 +113,7 @@ export async function GET(request: Request) {
     } catch (e) {
       console.error("Inserting events unsuccesfull. " + e);
     }
+    track("Connected and synced");
   }
 
   return NextResponse.json({});
