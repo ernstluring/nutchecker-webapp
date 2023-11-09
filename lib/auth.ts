@@ -30,6 +30,7 @@ export const authOptions: NextAuthOptions = {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
         token.provider = account.provider;
+        token.scope = account.scope;
       }
       return token;
     },
@@ -39,6 +40,7 @@ export const authOptions: NextAuthOptions = {
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;
       session.provider = token.provider;
+      session.scope = token.scope;
       return session;
     },
   },

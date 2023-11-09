@@ -6,6 +6,7 @@ declare module "next-auth/jwt" {
     accessToken: string | undefined;
     refreshToken: string | undefined;
     provider: string;
+    scope: string | undefined;
   }
 }
 
@@ -17,5 +18,6 @@ declare module "next-auth" {
     accessToken: string | undefined;
     refreshToken: string | undefined;
     provider: string;
+    scope: string | undefined;
   }
 }
