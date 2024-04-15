@@ -36,7 +36,6 @@ function formatDateToYMD(date: Date) {
 }
 
 export const maxDuration = 60;
-export const runtime = "edge";
 
 // This route is used as callback from the Google OAuth provider.
 // After the user has authenticated we want to connect to their Google Calendar,
